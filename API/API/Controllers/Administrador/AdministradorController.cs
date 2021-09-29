@@ -19,7 +19,7 @@ namespace API.Controllers
         {
             var result = handler.Handle(query);
 
-            return result.Any() ? (IActionResult)Ok(result) : NoContent();
+            return result.Any() ? Ok(result) : NoContent();
         }
 
         [HttpPost("adicionar")]
