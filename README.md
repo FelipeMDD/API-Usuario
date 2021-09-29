@@ -24,6 +24,9 @@ Endpoints:
 
   /api/Administrador/adicionar - administrador
   /api/Administrador/usuarios - administrador
+  
+  /api/Common/{id} - administrador e usuario
+  /api/Common/alterar - administrador e usuario
 
 
 O projeto foi desenvolvido para aplicar conhecimentos 
