@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using API.Features.Administradores;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace API.Controllers
 {
@@ -11,7 +12,7 @@ namespace API.Controllers
     {
 
         [HttpGet("usuarios")]
-        [AllowAnonymous]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "administrador")]
         public IActionResult ListarUsuarios(
             [FromQuery] ListarUsuarios.Query query,
             [FromServices] ListarUsuarios.QueryHandler handler)
@@ -21,7 +22,8 @@ namespace API.Controllers
             return result.Any() ? (IActionResult)Ok(result) : NoContent();
         }
 
-        [HttpPost("ativar")]
+        [HttpPost("adicionar")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "administrador")]
         public IActionResult AdicionarNovoUsuario(
            [FromBody] AdicionarUsuario.Command command,
            [FromServices] AdicionarUsuario.CommandHandler handler)

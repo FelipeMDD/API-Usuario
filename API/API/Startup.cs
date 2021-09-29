@@ -1,4 +1,5 @@
 using API.Infrastructure;
+using API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,8 @@ namespace API
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
+            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+
             services.AddDbContext<Context>(options => options.UseSqlServer(connectionString));
 
             services.AddCors();
@@ -43,7 +46,7 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
 
-            var key = Encoding.ASCII.GetBytes("8f08b8662d3815fcdb8bcf6bef936935ac80f38648537c4f9a84eae07c48e88d");
+            var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
 
             services.AddAuthentication(x =>
             {

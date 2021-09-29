@@ -17,7 +17,7 @@ namespace API.Services
         public static string GenerateToken(Acesso user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("8f08b8662d3815fcdb8bcf6bef936935ac80f38648537c4f9a84eae07c48e88d");
+            var key = Encoding.ASCII.GetBytes("mrndljbkvtydmsalksagababtezyebzp");
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

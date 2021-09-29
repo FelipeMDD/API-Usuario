@@ -6,7 +6,6 @@ namespace API.Infrastructure
     public class Context : DbContext
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
-        public virtual DbSet<Usuario> Usuario { get; set; }
 
         public virtual DbSet<Acesso> Acesso { get; set; }
 
