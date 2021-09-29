@@ -8,6 +8,8 @@ Tutorial para utilização:
 
 2 - Utilizando o token no postman selecionar a autenticação Bearer Token e adicionar o token enviado pelo endpoint de login 
 
+3 - Acessar endpoints enviando informações pelo body ou rota
+
 Usuarios:
 
     Administrador
