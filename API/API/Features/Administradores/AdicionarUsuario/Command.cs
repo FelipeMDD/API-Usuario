@@ -13,7 +13,7 @@ namespace API.Features.Administradores
 
             public string password { get; set; }
 
-            public bool role { get; set; }
+            public string role { get; set; }
 
             public string nome { get; set; }
 

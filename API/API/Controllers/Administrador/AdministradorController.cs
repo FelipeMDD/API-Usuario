@@ -1,25 +1,14 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using API.Infrastructure;
-using API.Models;
 using Microsoft.AspNetCore.Authorization;
-using API.Services;
-using System;
 using API.Features.Administradores;
 
-namespace API.Controllers.Administrador
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AdministradorController : ControllerBase
     {
-        private readonly Context _context;
-
-        public AdministradorController(Context context)
-        {
-            _context = context;
-        }
 
         [HttpGet("usuarios")]
         [AllowAnonymous]

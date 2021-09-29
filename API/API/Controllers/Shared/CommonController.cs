@@ -1,18 +1,13 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using API.Infrastructure;
-using API.Models;
 using Microsoft.AspNetCore.Authorization;
-using API.Services;
-using System;
-using API.Features.Usuarios;
+using API.Features.Shared;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class CommonController : ControllerBase
     {
         [HttpGet("resumo")]
         [AllowAnonymous]

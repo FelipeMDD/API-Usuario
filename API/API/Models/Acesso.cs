@@ -8,7 +8,7 @@
 
         public string Password { get; set; }
 
-        public bool Role { get; set; }
+        public string Role { get; set; }
 
         public string Nome { get; set; }
 

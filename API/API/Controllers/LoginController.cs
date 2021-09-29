@@ -1,12 +1,9 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using API.Infrastructure;
 using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using API.Services;
-using System;
-using API.Features.Login;
 
 namespace API.Controllers
 {
