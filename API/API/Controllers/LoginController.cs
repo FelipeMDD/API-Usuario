@@ -6,10 +6,11 @@ using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using API.Services;
 using System;
+using API.Features.Administradores;
 
 namespace API.Controllers
 {
-    [Route("api/login")]
+    [Route("api/")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -25,7 +26,9 @@ namespace API.Controllers
         [AllowAnonymous]
         public ActionResult<dynamic> Authenticate([FromBody] Acesso login)
         {
-            var id = _context.Acesso.Where(u => u.Login == login.Login && u.Password == login.Password).SingleOrDefault();
+            var id = _context.Acesso
+                .Where(u => u.Login == login.Login && u.Password == login.Password)
+                .SingleOrDefault();
 
             var user = _context.Acesso.Find(id.Id);
 
@@ -42,6 +45,5 @@ namespace API.Controllers
                 token = token
             };
         }
-
     }
 }

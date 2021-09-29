@@ -62,6 +62,21 @@ namespace API
                         ValidateAudience = false
                     };
                 });
+
+            services.Scan(scan => scan
+                .FromApplicationDependencies()
+                .AddClasses(classes => classes.Where(type => type.Name.Equals("QueryHandler")))
+                    .AsSelf()
+                    .WithTransientLifetime()
+                .AddClasses(classes => classes.Where(type => type.Name.Equals("CommandHandler")))
+                    .AsSelf()
+                    .WithTransientLifetime()
+                .AddClasses(classes => classes.Where(type => type.Name.Equals("CommandValidator")))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime()
+                .AddClasses(classes => classes.Where(type => type.Name.Equals("QueryValidator")))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
