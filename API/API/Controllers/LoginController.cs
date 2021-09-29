@@ -6,44 +6,23 @@ using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using API.Services;
 using System;
-using API.Features.Administradores;
+using API.Features.Login;
 
 namespace API.Controllers
 {
-    [Route("api/")]
+    [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly Context _context;
-
-        public LoginController(Context context)
-        {
-            _context = context;
-        }
-
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public ActionResult<dynamic> Authenticate([FromBody] Acesso login)
+        public ActionResult<dynamic> Authenticate(
+            [FromBody] GerarToken.Command command,
+            [FromServices] GerarToken.CommandHandler handler)
         {
-            var id = _context.Acesso
-                .Where(u => u.Login == login.Login && u.Password == login.Password)
-                .SingleOrDefault();
-
-            var user = _context.Acesso.Find(id.Id);
-
-            if (user == null)
-            {
-                return NotFound(new { message = "Usuário ou senha não encontrado" });
-            }
-
-            var token = TokenService.GenerateToken(user);
-            user.Password = "";
-            return new
-            {
-                user = user,
-                token = token
-            };
+            return handler
+                .Handle(command).Result;     
         }
     }
 }

@@ -10,7 +10,7 @@ using API.Features.Administradores;
 
 namespace API.Controllers.Administrador
 {
-    [Route("api/")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AdministradorController : ControllerBase
     {
@@ -21,10 +21,10 @@ namespace API.Controllers.Administrador
             _context = context;
         }
 
-        [HttpGet]
-        [Route("usuarios")]
+        [HttpGet("usuarios")]
         [AllowAnonymous]
-        public IActionResult ListarUsuarios([FromQuery] ListarUsuarios.Query query,
+        public IActionResult ListarUsuarios(
+            [FromQuery] ListarUsuarios.Query query,
             [FromServices] ListarUsuarios.QueryHandler handler)
         {
             var result = handler.Handle(query);
