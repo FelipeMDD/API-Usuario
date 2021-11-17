@@ -1,4 +1,7 @@
 API-Usuario
+=================================================================================================================================================================================
+** Devido ao custo de alocação no sistema AWS da Amazon, a base de dados foi desativada, porém a aplicação do código e das bibliotecas envolvidas ainda podem ser usadas como consulta **
+=================================================================================================================================================================================
 
 Projeto de API .Net Core, utilizando autenticação BEARER JWT, com conexão de dados SQL, utilizando uma base online hospedada no serviço AWS, Unit Tests, Entity Framework
 
